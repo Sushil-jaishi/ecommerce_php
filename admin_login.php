@@ -1,3 +1,32 @@
+<?php
+require_once "database/connection.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $sql = "SELECT * FROM admin WHERE email = '$email'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+
+    if ($password==$user['password']) {
+      $_SESSION['email'] = $user['email'];
+      $_SESSION['first_name'] = $user['first_name'];
+      header('Location:admin/admin.php');
+    } else {
+      $status = "Invalid password!";
+    }
+  }else{
+    $status= "user not found";
+  }
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,8 +113,9 @@
 </head>
 <body>
   <div class="login-container">
+    <div><?php if(isset($status))echo $status;?></div>
     <h2>Admin Login Form</h2>
-    <form>
+    <form method="post">
       <div class="form-group">
         <label for="email" class="required">E-mail</label>
         <input type="email" id="email" name="email" placeholder="Enter your email" required>
