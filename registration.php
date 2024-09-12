@@ -1,3 +1,24 @@
+<?php
+require_once "database/connection.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $contact = $_POST['contact'];
+  $address = $_POST['address'];
+  $zip = $_POST['zip'];
+  $password = $_POST['password'];
+
+  $sql = "insert into customer (username, email,contact,address,zipcode,password) values ('$username', '$email','$contact','$address','$zip','$password')";
+  if($conn->query($sql)==true){
+    $status = "customer created successfully";
+  }else{
+    echo "failed to create database".$conn->error;
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,8 +114,9 @@
 </head>
 <body>
   <div class="form-container">
+  <div><?php if(isset($status))echo $status;?></div>
     <h2>Registration Form</h2>
-    <form>
+    <form method="post">
       <div class="form-group">
         <label for="username" class="required">UserName</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
