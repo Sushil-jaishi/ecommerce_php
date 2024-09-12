@@ -1,0 +1,173 @@
+body{
+  background: #9e80ad !important;
+
+}
+
+/* Style for navbar */
+.navbar {
+  background: #ea4ed3;
+
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 500px !important; /* Adjust width of the search input */
+}
+
+.nav-link {
+  color: rgb(8, 5, 8);
+}
+
+
+
+
+/* 
+style for sub-navbar */
+
+/* Sub-Navbar */
+.navbar.bg-light {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-link {
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+/* Dropdown items */
+.dropdown-menu {
+  border-radius: 5px;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+
+/* Sub-Navbar Styling */
+.navbar.bg-light {
+  background-color: #f875f8 !important; /* Light pink background */
+  padding: 0.5rem 0; /* Vertical padding */
+  margin-top: 3px;
+  text-align: center; /* Center the content */
+}
+
+.navbar-nav {
+  margin: 0 auto; /* Center the navbar items */
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  gap: 30px; /* Add space between the items */
+}
+
+.nav-link {
+  color: #333;
+  font-weight: bold;
+  padding: 10px 15px; /* Add padding to increase the clickable area */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect */
+.nav-link:hover {
+  color: #ffffff;
+  background-color: #ec407a; /* Darker pink on hover */
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+  background-color: #b534ad; /* Light pink background for dropdown */
+  border-radius: 5px;
+}
+
+.dropdown-item:hover {
+  font-size: large;
+  color: black;
+  font-weight: 600;
+  background-color: #e181f4; /* Slightly darker pink on hover */
+  color: #333;
+}
+
+/* Responsive Fixes */
+@media (max-width: 992px) {
+  .navbar-nav {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      gap: 10px; /* Adjust spacing */
+  }
+}
+
+
+
+
+
+
+
+
+/*  ****************************************************************card section *********************************************/
+
+.card-img-top {
+  width: 80%;
+  height: 150px !important; /* Reduced height */
+  object-fit: cover; /* Ensure the image fits properly */
+}
+
+/* Card Dimensions */
+.card {
+  max-width: 240px;  /* Max width */
+  max-height: 320px; /* Max height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;  /* Handle overflow */
+}
+
+/* Card Body */
+.card-body {
+  flex: 1;
+  padding: 0.5rem; /* Adjust padding */
+}
+
+/* Card Title */
+.card-title {
+  font-size: 1rem;  /* Adjust font size */
+  margin-bottom: 0.5rem; /* Reduce spacing below title */
+}
+
+/* Card Text */
+.card-text {
+  font-size: 0.75rem; /* Reduce font size */
+  margin-bottom: 0.5rem; /* Reduce spacing below text */
+}
+
+/* List Group Item */
+.list-group-item {
+  font-size: 0.75rem; /* Match font size */
+}
+
+/* Card Body (Text Center) */
+.card-body.text-center {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Card Link (Buttons) */
+.card-body.text-center a.card-link {
+  display: inline-flex; 
+  height: 30px; /* Reduced height */
+  line-height: 30px; /* Center text vertically */
+  padding: 0 8px; /* Reduce padding */
+  font-size: 0.75rem; /* Reduce font size */
+  text-align: center;
+  border-radius: 4px;
+}
+

@@ -1,0 +1,29 @@
+body {
+  background-color: #d385f5;
+}
+
+h2, h4 {
+  color: #343a40;
+}
+
+form {
+  border: 1px solid #ced4da;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+table {
+  margin-top: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+table th, table td {
+  vertical-align: middle;
+}
+
+table img {
+  max-width: 50px;
+  border-radius: 4px;
+}
