@@ -1,3 +1,41 @@
+<?php
+session_start();
+if(isset($_SESSION['username'])){
+  header('Location: index.php');
+  exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Database connection
+    require_once "database/connection.php";
+
+    // Get the email and password
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Fetch the user from the database
+    $sql = "SELECT * FROM customer WHERE email = '$email'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+
+        // Verify the password of user
+        if ($password==$user['password']) {
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['id']= $user['id'];
+            header('Location: index.php');
+            exit();
+        } else {
+            echo "Invalid password!";
+        }
+    } else{
+      echo "User not found!";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +123,7 @@
 <body>
   <div class="login-container">
     <h2>Login Form</h2>
-    <form>
+    <form method="post">
       <div class="form-group">
         <label for="email" class="required">E-mail</label>
         <input type="email" id="email" name="email" placeholder="Enter your email" required>

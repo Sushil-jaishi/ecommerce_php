@@ -1,3 +1,31 @@
+<?php
+require_once "../database/connection.php";
+
+session_start();
+if(isset($_SESSION['username'])){
+
+$customer_id=$_SESSION['id'] ;     
+if(isset($_GET["id"])){
+    $id=$_GET["id"];
+    $sql="select * from cart where customer_id='$customer_id' and product_id='$id'";
+    $result=$conn-> query($sql);
+    if($result->num_rows==0){
+    $sql = "insert into cart (customer_id,product_id) values ('$customer_id','$id')";
+    $conn->query($sql); 
+    $message = "successfully added to cart";     
+    }else{
+        $message= "already on the cart";
+    }
+}
+}
+
+$sql = "SELECT * FROM product where category='cosmetic'";
+$result = $conn->query($sql);
+$product = $result -> fetch_all(MYSQLI_ASSOC);
+$max_length= count($product);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,274 +149,38 @@
     <div class="container my-4">
         <div class="row">
             <!-- Repeat this block for each card -->
+             <?php 
+                for($i=0;$i<$max_length;$i++) {
+             ?>
             <div class="col-md-2 mb-4">
                 <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
+                    <img src="../assets/images/uploads/<?php echo $product[$i]['image']?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
+                        <h5 class="card-title"><?php echo $product[$i]['name'];?></h5>
+                        <p class="card-text"><?php echo $product[$i]['description'];?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
+                        <li class="list-group-item">Price: <?php echo $product[$i]['price'];?></li>
                     </ul>
                     <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
+                        <a href="cosmetic.php?id=<?php echo $product[$i]['id']; ?>" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
                         <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
                     </div>
                 </div>
             </div>
+            <?php
+                }
+            ?>
 
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="../image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple Iphone</h5>
-                        <p class="card-text">Newly launched</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: 100000</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
-                    </div>
-                </div>
-            </div>
             <!-- Repeat end -->
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        alert("<?php echo $message; ?>");
+    </script>
     <?php include '../footer.php'; ?>
 </body>
 </html>

@@ -19,7 +19,7 @@ if(isset($_GET["id"])){
 }
 }
 
-$sql = "SELECT * FROM product where brand='Adidas'";
+$sql = "SELECT * FROM product where brand='others'";
 $result = $conn->query($sql);
 $product = $result -> fetch_all(MYSQLI_ASSOC);
 $max_length= count($product);
@@ -113,13 +113,15 @@ $max_length= count($product);
                 <li class="nav-item">
                     <a class="nav-link" href="../index.php">Home</a>
                 </li>
-                 <!-- Brands Dropdown -->
+                
+            
+                  <!-- Brands Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="brandsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Brands
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="brandsDropdown">
-                    <li><a class="dropdown-item text-center" href="nike.php">Nike</a></li>
+                    <li><a class="dropdown-item text-center" href="others.php">others</a></li>
                     <li><a class="dropdown-item text-center" href="lens.php">Len's Cart</a></li>
                     <li><a class="dropdown-item text-center" href="adidas.php">Adidas</a></li>
                 </ul>
@@ -136,7 +138,7 @@ $max_length= count($product);
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- Home Link -->
                 <li class="nav-item">
-                    <h5> Adidas Section</h5> 
+                    <h5>others Section</h5>
                     <p>Choose your desired one</p>
                 </li>
             </ul>
@@ -160,7 +162,7 @@ $max_length= count($product);
                         <li class="list-group-item">Price: <?php echo $product[$i]['price'];?></li>
                     </ul>
                     <div class="card-body text-center">
-                        <a href="adidas.php?id=<?php echo $product[$i]['id']; ?>" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
+                        <a href="others.php?id=<?php echo $product[$i]['id']; ?>" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
                         <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
                     </div>
                 </div>
@@ -177,7 +179,6 @@ $max_length= count($product);
     <script>
         alert("<?php echo $message; ?>");
     </script>
-
     <?php include '../footer.php'; ?>
 </body>
 </html>

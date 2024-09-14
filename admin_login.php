@@ -13,9 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $result->fetch_assoc();
 
     if ($password==$user['password']) {
-      $_SESSION['email'] = $user['email'];
-      $_SESSION['first_name'] = $user['first_name'];
       header('Location:admin/admin.php');
+      exit();
     } else {
       $status = "Invalid password!";
     }

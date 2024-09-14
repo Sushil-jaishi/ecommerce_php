@@ -153,10 +153,10 @@ style for sub-navbar */
                 <!-- Login/Register Buttons -->
                 <ul class="navbar-nav mx-5">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary me-2 fw-bold" href="#">Login</a>
+                        <a class="nav-link btn btn-outline-primary me-2 fw-bold" href="userlogin.php">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-success fw-bold" href="#">Register</a>
+                        <a class="nav-link btn btn-outline-success fw-bold" href="registration.php">Register</a>
                     </li>
                 </ul>
             </div>

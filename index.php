@@ -1,3 +1,29 @@
+<?php
+require_once "database/connection.php";
+
+session_start();
+if(isset($_SESSION['username'])){
+
+$customer_id=$_SESSION['id'] ;     
+if(isset($_GET["id"])){
+    $id=$_GET["id"];
+    $sql="select * from cart where customer_id='$customer_id' and product_id='$id'";
+    $result=$conn-> query($sql);
+    if($result->num_rows==0){
+    $sql = "insert into cart (customer_id,product_id) values ('$customer_id','$id')";
+    $conn->query($sql); 
+    $message = "successfully added to cart";     
+    }else{
+        $message= "already on the cart";
+    }
+}
+}
+$sql = "SELECT * FROM product where brand='others' and category='others'";
+$result = $conn->query($sql);
+$product = $result -> fetch_all(MYSQLI_ASSOC);
+$max_length= count($product);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,12 +72,29 @@
 
                 <!-- Login/Register Buttons -->
                 <ul class="navbar-nav mx-5">
+                <?php
+
+                
+                if(isset($_SESSION['username'])){
+                  ?>
+
+                    <li class="nav-item">
+                       <div class="nav-link btn btn-outline-primary me-2 fw-bold"> <?php echo "Hello ".$_SESSION['username']; ?></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-success fw-bold" href="logout.php">Logout</a>
+                    </li>
+
+                    <?php
+                    }else{
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-primary me-2 fw-bold" href="userlogin.php">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-success fw-bold" href="registration.php">Register</a>
                     </li>
+                    <?php }?>
                 </ul>
             </div>
         </div>
@@ -78,6 +121,7 @@
                     <li><a class="dropdown-item text-center" href="category/accessories.php">Accessories</a></li>
                     <li><a class="dropdown-item text-center" href="category/mens.php">Men's Wear</a></li>
                     <li><a class="dropdown-item text-center" href="category/womens.php">Women's Wear</a></li>
+                    <li><a class="dropdown-item text-center" href="category/others.php">Others</a></li>
                 </ul>
             </li>
 
@@ -90,6 +134,7 @@
                     <li><a class="dropdown-item text-center" href="brand/nike.php">Nike</a></li>
                     <li><a class="dropdown-item text-center" href="brand/lens.php">Len's Cart</a></li>
                     <li><a class="dropdown-item text-center" href="brand/adidas.php">Adidas</a></li>
+                    <li><a class="dropdown-item text-center" href="brand/Others.php">Others</a></li>
                 </ul>
             </li>
 
@@ -104,9 +149,13 @@
             </li>
 
             <!-- Cart Link -->
+             <?php
+                if(isset($_SESSION['username'])){
+                  ?>
             <li class="nav-item">
                 <a class="nav-link" href="cart.php">Cart</a>
             </li>
+            <?php } ?>
 
             <!-- Contact Link -->
             <li class="nav-item">
@@ -132,96 +181,31 @@
 
 
 <!-- ******************************************* Card html  **********************************************-->
- <div class="container my-4 ">
-  <div class="row justify-content-center">
-    <!-- <div class="bg-primary w-100"> <p class="text-center">Here are our product</p></div> -->
-    <!-- Card 1 -->
-    <div class="col-md-3 mb-4">
-      <div class="card" style="width: 100%;">
-        <img src="image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top "  style="width: 80% " alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Apple Iphone</h5>
-          <p class="card-text">Newly launched apple iphone with special updated features.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Price: 100000</li>
-        </ul>
-        <div class="card-body text-center">
-          <a href="#" class="card-link  text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Add to card</a>
-          <a href="#" class="card-link text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Shop Now</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="col-md-3 mb-4">
-        <div class="card" style="width: 100%;">
-          <img src="image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top "  style="width: 80% " alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Apple Iphone</h5>
-            <p class="card-text">Newly launched apple iphone with special updated features.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price: 100000</li>
-          </ul>
-          <div class="card-body text-center">
-            <a href="#" class="card-link  text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Add to card</a>
-            <a href="#" class="card-link text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Shop Now</a>
-          </div>
-        </div>
-      </div>
-
-    <!-- Card 3 -->
-    <div class="col-md-3 mb-4">
-        <div class="card" style="width: 100%;">
-          <img src="image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top "  style="width: 80% " alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Apple Iphone</h5>
-            <p class="card-text">Newly launched apple iphone with special updated features.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price: 100000</li>
-          </ul>
-          <div class="card-body text-center">
-            <a href="#" class="card-link  text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Add to card</a>
-            <a href="#" class="card-link text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Shop Now</a>
-          </div>
-        </div>
-      </div>
-
-    <!-- Card 4 -->
-    <div class="col-md-3 mb-4">
-        <div class="card" style="width: 100%;">
-          <img src="image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top "  style="width: 80% " alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Apple Iphone</h5>
-            <p class="card-text">Newly launched apple iphone with special updated features.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price: 100000</li>
-          </ul>
-          <div class="card-body text-center">
-            <a href="#" class="card-link  text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Add to card</a>
-            <a href="#" class="card-link text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Shop Now</a>
-          </div>
-        </div>
-      </div>
-    <!-- Card 5 (starts a new row) -->
-    <div class="col-md-3 mb-4">
-        <div class="card" style="width: 100%;">
-          <img src="image/WhatsApp_Image_2024-09-08_at_16.11.25_1cf0fa24-removebg-preview.png" class="card-img-top "  style="width: 80% " alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Apple Iphone</h5>
-            <p class="card-text">Newly launched apple iphone with special updated features.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price: 100000</li>
-          </ul>
-          <div class="card-body text-center">
-            <a href="#" class="card-link  text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Add to card</a>
-            <a href="#" class="card-link text-decoration-none border text-white p-2 rounded " style="background-color: rgb(221, 117, 242);">Shop Now</a>
-          </div>
-        </div>
+<div class="container my-4">
+        <div class="row">
+            <!-- Repeat this block for each card -->
+             <?php 
+                for($i=0;$i<$max_length;$i++) {
+             ?>
+            <div class="col-md-2 mb-4">
+                <div class="card">
+                    <img src="assets/images/uploads/<?php echo $product[$i]['image']?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $product[$i]['name'];?></h5>
+                        <p class="card-text"><?php echo $product[$i]['description'];?></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Price: <?php echo $product[$i]['price'];?></li>
+                    </ul>
+                    <div class="card-body text-center">
+                        <a href="index.php?id=<?php echo $product[$i]['id']; ?>" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
+                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
+            ?>
       </div>
 
     <!-- Add more cards as needed -->
@@ -236,6 +220,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+      alert("<?php echo $message; ?>");
         const images = document.querySelectorAll('.gallery-container img');
         let currentIndex = 0;
     
@@ -255,8 +240,10 @@
         // Double click to change image manually
         images.forEach(image => {
           image.addEventListener('dblclick', changeImage);
-        });
-      </script>
+        
+      });
+    </script>
+
 
 
 

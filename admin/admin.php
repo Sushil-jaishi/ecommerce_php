@@ -113,6 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="Eyewear">Eyewear</option>
                         <option value="Mens Wear">Men's Wear</option>
                         <option value="Womens Wear">Women's Wear</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -122,6 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="Nike">Nike</option>
                         <option value="Lens">Len's Cart</option>
                         <option value="Adidas">Adidas</option>
+                        <option value="others">Others</option>
                     </select>
                 </div>
                 <div class="mb-3">
