@@ -211,7 +211,7 @@ style for sub-navbar */
 
             <!-- Cart Link -->
             <li class="nav-item">
-                <a class="nav-link" href="cart.php">Cart</a>
+                <a class="nav-link" href="cart.php">Cart (0)</a>
             </li>
 
             <!-- Contact Link -->

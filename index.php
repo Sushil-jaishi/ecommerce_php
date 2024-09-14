@@ -153,7 +153,7 @@ $max_length= count($product);
                 if(isset($_SESSION['username'])){
                   ?>
             <li class="nav-item">
-                <a class="nav-link" href="cart.php">Cart</a>
+                <a class="nav-link" href="cart.php">Cart (0)</a>
             </li>
             <?php } ?>
 
