@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a class="nav-link" href="#">View User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">View Order</a>
+                    <a class="nav-link" href="view_order.php">View Order</a>
                 </li>
             </ul>
         </div>

@@ -1,9 +1,7 @@
 
 /* Apply gradient background */
 body {
-  background: linear-gradient(to bottom, #ffccff, #cc99ff, #9966ff, #6600cc); /* Pink to purple gradient */
-  height: 100vh;
-
+  background: linear-gradient(to bottom, #ffccff, #cc99ff, #ea72f7, #b175e8, #330c5b); Pink to purple gradient
 }
 
 /* Center the container and set maximum width */
