@@ -1,0 +1,63 @@
+/* Navbar container styling */
+.navbar {
+  background: linear-gradient(45deg, #9b59b6, #e91e63); /* Purple to pink gradient */
+  padding: 10px 20px;
+}
+
+/* Navbar brand (logo and text) */
+.navbar-brand {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  margin-right: 10px; /* Space between logo and text */
+}
+
+/* Style for navigation links */
+.nav-link {
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  margin: 0 10px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for links */
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white on hover */
+  border-radius: 5px;
+}
+
+/* Mobile navbar toggler */
+.navbar-toggler {
+  border-color: #fff;
+}
+
+/* Navbar toggler icon color */
+.navbar-toggler-icon {
+  background-color: #fff;
+}
+
+/* Make the navbar fixed to the top */
+.navbar.fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-nav {
+      text-align: center;
+  }
+  
+  .nav-item {
+      margin-bottom: 10px;
+  }
+}

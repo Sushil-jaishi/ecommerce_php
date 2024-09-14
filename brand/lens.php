@@ -95,8 +95,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="brandsDropdown">
                     <li><a class="dropdown-item text-center" href="nike.php">Nike</a></li>
-                    <li><a class="dropdown-item text-center" href="gucci.php">Gucci</a></li>
-                    <li><a class="dropdown-item text-center" href="louis.php">Louis Vuitton</a></li>
+                    <li><a class="dropdown-item text-center" href="lens.php">Len's Cart</a></li>
+                    <li><a class="dropdown-item text-center" href="adidas.php">Adidas</a></li>
                 </ul>
             </li>
             </ul>
@@ -111,7 +111,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- Home Link -->
                 <li class="nav-item">
-                    <h5>Gucci Section</h5>
+                    <h5>Len's Cart Section</h5>
                     <p>Choose your desired one</p>
                 </li>
             </ul>

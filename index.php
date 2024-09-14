@@ -88,8 +88,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="brandsDropdown">
                     <li><a class="dropdown-item text-center" href="brand/nike.php">Nike</a></li>
-                    <li><a class="dropdown-item text-center" href="brand/gucci.php">Gucci</a></li>
-                    <li><a class="dropdown-item text-center" href="brand/louis.php">Louis Vuitton</a></li>
+                    <li><a class="dropdown-item text-center" href="brand/lens.php">Len's Cart</a></li>
+                    <li><a class="dropdown-item text-center" href="brand/adidas.php">Adidas</a></li>
                 </ul>
             </li>
 
