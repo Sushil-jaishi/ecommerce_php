@@ -194,9 +194,9 @@ $max_length= count($product);
              <?php 
                 for($i=0;$i<$max_length;$i++) {
              ?>
-            <div class="col-md-2 mb-4">
-                <div class="card">
-                    <img src="assets/images/uploads/<?php echo $product[$i]['image']?>" class="card-img-top" alt="...">
+            <div class="col-md-3 mb-4">
+                <div class="card" style="width: 100%;">
+                    <img src="assets/images/uploads/<?php echo $product[$i]['image']?>" class="card-img-top" alt="..." style="width: 80% ">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $product[$i]['name'];?></h5>
                         <p class="card-text"><?php echo $product[$i]['description'];?></p>
@@ -214,7 +214,6 @@ $max_length= count($product);
                 }
             ?>
       </div>
-
     <!-- Add more cards as needed -->
   </div>
 </div>
