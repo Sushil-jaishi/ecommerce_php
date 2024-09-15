@@ -1,0 +1,57 @@
+/* General Page Styles */
+body {
+    background: linear-gradient(to bottom, #ffccff, #cc99ff, #ea72f7, #b175e8, #330c5b);
+  }
+  
+  /* Center the container and set maximum width */
+  .container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  /* Heading styling */
+  h2 {
+    text-align: center;
+    color: #6600cc; /* Purple family color */
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Form input styling */
+  input[type="text"], input[type="number"], textarea, select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Button styling */
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #6600cc; /* Purple */
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #5500aa; /* Darker purple */
+  }
+  
+  /* Image styling */
+  img {
+    margin-top: 10px;
+    display: block;
+  }
+  

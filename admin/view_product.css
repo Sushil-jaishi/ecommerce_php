@@ -1,7 +1,7 @@
 
 /* Apply gradient background */
 body {
-  background: linear-gradient(to bottom, #ffccff, #cc99ff, #ea72f7, #b175e8, #330c5b); Pink to purple gradient
+  background: linear-gradient(to bottom, #ffccff, #cc99ff, #ea72f7, #b175e8, #330c5b);
 }
 
 /* Center the container and set maximum width */
@@ -40,6 +40,5 @@ h4 {
 .table img {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
 }
 

@@ -1,6 +1,8 @@
 <?php
 require_once "database/connection.php";
-
+if(isset($_GET['message'])){
+    $message = $_GET['message'];
+}
 session_start();
 if(isset($_SESSION['username'])){
 
@@ -153,7 +155,12 @@ $max_length= count($product);
                 if(isset($_SESSION['username'])){
                   ?>
             <li class="nav-item">
-                <a class="nav-link" href="cart.php">Cart (0)</a>
+                <?php
+                $sql= "select * from cart";
+                $result= $conn->query($sql);
+                
+                ?>
+                <a class="nav-link" href="cart.php">Cart (<?php echo $result->num_rows; ?>)</a>
             </li>
             <?php } ?>
 
@@ -220,6 +227,7 @@ $max_length= count($product);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+       
       alert("<?php echo $message; ?>");
         const images = document.querySelectorAll('.gallery-container img');
         let currentIndex = 0;

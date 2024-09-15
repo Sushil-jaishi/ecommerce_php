@@ -164,7 +164,7 @@ $max_length= count($product);
                     </ul>
                     <div class="card-body text-center">
                         <a href="cosmetic.php?id=<?php echo $product[$i]['id']; ?>" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Add to cart</a>
-                        <a href="#" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
+                        <a href="../buy.php?id=<?php echo $product[$i]['id']; ?>" class="card-link text-decoration-none border text-white" style="background-color: rgb(221, 117, 242);">Shop Now</a>
                     </div>
                 </div>
             </div>

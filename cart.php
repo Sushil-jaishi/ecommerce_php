@@ -66,6 +66,8 @@ $cart=$result->fetch_all(MYSQLI_ASSOC);
             </div>
           </div>
         </div>
+
+        
         <div id="checkout-section" class="container">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -114,6 +116,7 @@ function showCheckout() {
 function hideCheckout() {
     document.getElementById('checkout-section').style.display = 'none';
 }
+
 </script>
 </body>
 </html>

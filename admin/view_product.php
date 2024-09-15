@@ -1,4 +1,11 @@
+<?php 
+require_once "../database/connection.php";
 
+$sql= "select * from product";
+$result = $conn->query($sql);
+$product = $result -> fetch_all(MYSQLI_ASSOC);
+// var_dump($product);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,20 +39,24 @@
           </thead>
           <tbody id="productTableBody">
             <!-- Product details will be inserted here using JS -->
+             <?php 
+             for($i=0;$i<count($product);$i++){
+             ?>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><img src="" alt=""></td>
+              <td><?php echo $i+1; ?></td>
+              <td><?php echo $product[$i]['name'] ?></td>
+              <td><?php echo $product[$i]['description'] ?></td>
+              <td><?php echo $product[$i]['price'] ?></td>
+              <td><?php echo $product[$i]['category'] ?></td>
+              <td><?php echo $product[$i]['brand'] ?></td>
+              <td><img src="<?php echo "../assets/images/uploads/".$product[$i]['image']; ?>" alt=""></td>
               <td>
                 <!-- Update and Delete buttons -->
-                <button class="btn btn-primary btn-sm">Update</button>
-                <button class="btn btn-danger btn-sm">Delete</button>
+                <a href="update_product.php?id=<?php echo $product[$i]['id']; ?>" class="btn btn-primary btn-sm">Update</a>
+                <a href="delete_product.php?id=<?php echo $product[$i]['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
               </td>
             </tr>
+            <?php } ?>
             <!-- Add more rows as needed -->
           </tbody>
         </table>
