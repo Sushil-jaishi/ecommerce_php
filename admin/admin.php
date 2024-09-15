@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a class="nav-link" href="view_order.php">View Order</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../logout.php">View Order</a>
+                    <a class="nav-link" href="../logout.php">Logout</a>
                 </li>
             </ul>
         </div>
